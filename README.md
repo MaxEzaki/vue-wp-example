@@ -32,3 +32,6 @@ npm run test:unit
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### 概要
+vuejsを使ってrest apiでwpからデータを取得するテスト
