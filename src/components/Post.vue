@@ -1,23 +1,25 @@
 <template>
   <div class="hello">
     <h1>{{ post.title.rendered }}</h1>
-    <div v-html="post.content.rendered"></div>
+    <div v-html="post.content['rendered']"></div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import constant from '@/definition/constant.js';
 export default {
   name: 'Post',
   props: {
     postId: {
       type:String,
-      default:0
+      default:"0"
     }
   },
   data(){
     return {
-      post:[]
+      post:[],
+      wpJsonLink:constant.SITE_URL + constant.REST_API + this.postId
     }
   },
   mounted() {
@@ -25,9 +27,8 @@ export default {
   },
   methods:{
   	getPosts: function(){
-      axios.get( 'http://rhythm-onchi.com/wp-json/wp/v2/posts/'+this.postId )
+      axios.get( this.wpJsonLink )
       .then( response => {
-        console.log(response.data)
         this.post = response.data;
       } )
       .catch( error => {

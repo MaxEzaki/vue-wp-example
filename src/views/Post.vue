@@ -9,7 +9,6 @@ import Post from '@/components/Post.vue'
 
 export default {
   name: 'post',
-  // props:{post},
   components: {
     Post
   },
@@ -18,10 +17,5 @@ export default {
       postId:this.$route.params.id
     }
   },
-  mounted() {
-console.log(`hoge>>>`,this.$route.params.id)
-  },
-  methods:{
-  }
 }
 </script>

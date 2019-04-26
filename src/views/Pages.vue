@@ -12,13 +12,15 @@
 // @ is an alias to /src
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import constant from '@/definition/constant.js';
 
 export default {
   name: 'pages',
   components: {},
   data() {
     return {
-      posts: []
+      posts: [],
+      wpJsonLink:constant.SITE_URL + constant.REST_API
     }
   },
   mounted() {
@@ -26,7 +28,7 @@ export default {
   },
   methods:{
   	getPosts: function(){
-      axios.get( 'http://rhythm-onchi.com/wp-json/wp/v2/posts/' )
+      axios.get( this.wpJsonLink )
       .then( response => {
         console.log(response.data);
         this.posts = response.data;
